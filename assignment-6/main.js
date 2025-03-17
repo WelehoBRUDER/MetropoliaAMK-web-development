@@ -112,5 +112,9 @@ for (const movie of movies) {
   console.log(`${movie.title} - ${movie.rating}`);
 }
 
-displayBestMovie();
-displayMovies();
+if (movies.length > 0) {
+  displayBestMovie();
+  displayMovies();
+} else {
+  bestMovie.textContent = "No movies to display";
+}
