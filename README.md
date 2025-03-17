@@ -1,3 +1,3 @@
 # Week 1 HTML tasks
 
-* UNDER MAINTENANCE
+* Created a new repository with a sample HTML file.
