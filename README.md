@@ -1,4 +1,24 @@
 # MetropoliaAMK-web-development
 
 This repository houses all web-development tasks for my studies at Metropolia AMK.  
-Each week is separated to its own branch.
+
+## Week 1
+### Javascript Recap
+  #### [Part 1](https://users.metropolia.fi/~juhanaha/web-development/week-1/javascript-self-study/recap-1/)
+  * [x] Assignment 1
+  * [x] Assignment 2
+  * [x] Assignment 3
+  * [x] Assignment 4
+  * [x] Assignment 5
+  * [x] Assignment 6
+  #### [Part 2](https://users.metropolia.fi/~juhanaha/web-development/week-1/javascript-self-study/recap-2/)
+  * [x] Assignment 1
+  * [x] Assignment 2
+  * [x] Assignment 3
+  * [x] Assignment 4
+  * [x] Assignment 5
+  * [x] Assignment 6
+### HTML / CSS Recap
+  * [x] [HTML Recap](https://users.metropolia.fi/~juhanaha/web-development/week-1/html-page/)
+  * [x] [CSS Recap](https://users.metropolia.fi/~juhanaha/web-development/week-1/css-styles/)
+
