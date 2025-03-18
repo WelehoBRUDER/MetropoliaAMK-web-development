@@ -1,5 +1,5 @@
 :root {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 62.5%;
 }
 
@@ -32,6 +32,16 @@ table {
 }
 
 ul {
-  list-style-type: diamond;
-  padding: 0;
+  list-style-type: square;
+}
+
+main {
+  padding: 5rem;
+  background: silver;
+  box-shadow: 0 0 2rem silver;
+  border-radius: 4rem;
+}
+
+body {
+  background: rgb(215, 214, 214);
 }
