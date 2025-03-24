@@ -22,3 +22,11 @@ This repository houses all web-development tasks for my studies at Metropolia AM
   * [x] [HTML Recap](https://users.metropolia.fi/~juhanaha/web-development/week-1/html-page/)
   * [x] [CSS Recap](https://users.metropolia.fi/~juhanaha/web-development/week-1/css-styles/)
 
+## Week 2
+### Javascript Recap
+#### [Part 3](https://users.metropolia.fi/~juhanaha/web-development/week-2/recap-3/)
+* [x] Assignment 1
+* [x] Assignment 2
+* [x] Assignment 3
+* [x] Assignment 4
+* [x] Assignment 5
