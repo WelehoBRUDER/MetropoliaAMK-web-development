@@ -775,16 +775,22 @@ const restaurants = [
 })();
 
 let selectedRestaurant = "";
+const dialog = document.querySelector("#restaurant-info");
 
 function selectRestaurant(restaurant) {
   selectedRestaurant = restaurant;
-  const current = document.querySelector(".highlight");
-  if (current) {
-    current.classList.remove("highlight");
-  }
+  deselect();
   const next = document.querySelector(`#_${selectedRestaurant}`);
   if (next) {
     next.classList.add("highlight");
+  }
+  showSelectedRestaurant();
+}
+
+function deselect() {
+  const current = document.querySelector(".highlight");
+  if (current) {
+    current.classList.remove("highlight");
   }
 }
 
@@ -804,6 +810,35 @@ function createRestaurantsDisplay() {
     });
     restaurantsList.append(tr);
   });
+}
+// __v: 0,
+function showSelectedRestaurant() {
+  dialog.innerHTML = "";
+  const toDisplay = [
+    ["name", "Name"],
+    ["address", "Address"],
+    ["postalCode", "Postal Code"],
+    ["city", "City"],
+    ["phone", "Phone"],
+    ["company", "Company"],
+  ];
+  const restaurant = restaurants.find((r) => r._id === selectedRestaurant);
+  for (const keys of toDisplay) {
+    const key = keys[0];
+    const name = keys[1];
+    const p = document.createElement("p");
+    p.textContent = `${name}: ${restaurant[key]}`;
+    dialog.append(p);
+  }
+  dialog.showModal();
+}
+
+function closeDialog(e) {
+  if (e && e.target.id !== "restaurant-info") {
+    return;
+  }
+  deselect();
+  dialog.close();
 }
 
 createRestaurantsDisplay();
