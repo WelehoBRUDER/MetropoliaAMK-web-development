@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="t1.css">
+  <script src="t1.js" defer></script>
+</head>
+
+<body>
+  <h1>Todo List</h1>
+  <ul class="todo-list">
+    <!-- add todo list content here -->
+  </ul>
+  <dialog>
+    <h2>Add Todo Item</h2>
+    <form>
+      <input type="text" placeholder="Add todo item here" />
+      <button type="submit">Add</button>
+    </form>
+  </dialog>
+  <button class="add-btn" onclick="showAddModal()">Add Todo Item</button>
+  <div class="add-modal" onclick="hideAddModal(event)">
+    <div class="content">
+      <h2>Add Todo Item</h2>
+      <form onsubmit="addTodoItem(event)">
+        <input type="text" name="task" placeholder="Add todo item here" />
+        <button type="submit" class="add-btn">Save</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

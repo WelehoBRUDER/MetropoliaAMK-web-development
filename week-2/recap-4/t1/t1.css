@@ -1,0 +1,77 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15rem;
+}
+
+li {
+  border: 1px solid #000;
+  display: flex;
+  justify-content: flex-end;
+  line-height: 3rem;
+}
+
+label {
+  display: block;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+li button {
+  width: 2rem;
+  height: 3rem;
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+}
+
+li input {
+  position: absolute;
+  margin: 1rem 3rem;
+  cursor: pointer;
+}
+
+li input[type='checkbox']:checked + label {
+  background-color: rgb(146, 208, 136);
+  font-weight: bold;
+}
+
+.add-btn {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(80, 80, 168);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.add-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
