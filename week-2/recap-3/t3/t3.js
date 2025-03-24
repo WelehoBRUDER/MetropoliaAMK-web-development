@@ -4,7 +4,10 @@ function displayBrowserData() {
   target.innerHTML = "";
   target.innerHTML += `<h3>Browser/OS information</h3>`;
   getBrands();
-  target.innerHTML += `<p>Platform: ${navigator.userAgentData.platform}</p>`;
+  target.innerHTML += `<p>Platform: ${
+    navigator.userAgentData?.platform ||
+    "Unavailable (user agent not supported)"
+  }</p>`;
   target.innerHTML += `<p>Window size: ${window.innerWidth}x${window.innerHeight} px</p>`;
   target.innerHTML += `<p>Available size: ${window.outerWidth}x${window.outerHeight} px</p>`;
   target.innerHTML += `<p>Current date: ${new Date().toLocaleDateString(
@@ -18,10 +21,14 @@ function displayBrowserData() {
 }
 
 function getBrands() {
-  navigator.userAgentData.brands.map((brand) => {
-    if (brand.brand === "Not:A-Brand") return;
-    target.innerHTML += `<p>${brand.brand} - ${brand.version}</p>`;
-  });
+  if (navigator.userAgentData) {
+    navigator.userAgentData.brands?.map((brand) => {
+      if (brand.brand === "Not:A-Brand") return;
+      target.innerHTML += `<p>${brand.brand} - ${brand.version}</p>`;
+    });
+  } else {
+    target.innerHTML += `${navigator.userAgent}`;
+  }
 }
 
 displayBrowserData();
