@@ -32,12 +32,6 @@ td {
   font-weight: bold;
 }
 
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .bold {
   font-weight: bold;
 }

@@ -8,16 +8,36 @@ const sortRestaurantsAlphabetically = () => {
   restaurants.sort((a, b) => a.name.localeCompare(b.name));
 };
 
+const closeDialog = (e) => {
+  if (e && e.target.id !== "restaurant-info") return;
+  deselect();
+  dialog.close();
+};
+
 let selectedRestaurant = "";
 const dialog = document.querySelector("#restaurant-info");
+dialog.addEventListener("click", closeDialog);
 
 const getRestaurants = async () => {
-  const data = await fetchData(`${api}/restaurants`);
+  const data = await fetchData(`${baseUrl}/restaurants`);
   if (data) {
     restaurants.push(...data);
     sortRestaurantsAlphabetically();
     createRestaurantsDisplay();
   }
+};
+
+const createRestaurantsDisplay = () => {
+  const restaurantsList = document.querySelector(".restaurants");
+
+  restaurants.forEach((restaurant) => {
+    const tr = restaurantRow(restaurant);
+
+    tr.addEventListener("click", () => {
+      selectRestaurant(restaurant._id);
+    });
+    restaurantsList.append(tr);
+  });
 };
 
 const selectRestaurant = (restaurant) => {
@@ -37,10 +57,14 @@ const deselect = () => {
   }
 };
 
-const closeDialog = (e) => {
-  if (e && e.target.id !== "restaurant-info") return;
-  deselect();
-  dialog.close();
+const showSelectedRestaurant = async () => {
+  dialog.innerHTML = "";
+  const menu = await fetchData(
+    `${baseUrl}/restaurants/daily/${selectedRestaurant}/fi`
+  );
+  const restaurant = restaurants.find((r) => r._id === selectedRestaurant);
+  dialog.innerHTML = restaurantModal(restaurant, menu);
+  dialog.showModal();
 };
 
 getRestaurants();

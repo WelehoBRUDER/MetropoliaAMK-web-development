@@ -1,17 +1,3 @@
-// const createRestaurantsDisplay = () => {
-//   const restaurantsList = document.querySelector(".restaurants");
-
-//   restaurants.forEach((restaurant) => {
-//     const tr = document.createElement("tr");
-//     tr.id = "_" + restaurant._id;
-
-//     tr.addEventListener("click", () => {
-//       selectRestaurant(restaurant._id);
-//     });
-//     restaurantsList.append(tr);
-//   });
-// };
-
 const restaurantRow = (restaurant) => {
   const {name, address, company} = restaurant;
   const tr = document.createElement("tr");
@@ -39,16 +25,22 @@ const restaurantModal = (restaurant, menu) => {
   `;
   if (courses.length > 0) {
     content += "<h3>Daily Menu</h3>";
+    content += `<ul class="menu">`;
     courses.forEach((course) => {
       const {name, diets, price} = course;
+      console.log(course);
       content += `
-        <div class="menu-item">
-          <p>${name ?? "Unknown"}</p>
-          <p class="bold">${diets}</p>
-          <p class="italic">${price}</p>
-        </div>
+        <li class="menu-item">
+          <p>
+            ${name ?? "Unknown"}
+            <span class="bold">${diets}</span>
+            <span class="italic">${price || ""}</span>
+          </p>
+
+        </li>
       `;
     });
+    content += "</ul>";
   } else {
     content += "<p>No daily menu available</p>";
   }
@@ -56,67 +48,3 @@ const restaurantModal = (restaurant, menu) => {
 };
 
 export {restaurantRow, restaurantModal};
-
-// const showSelectedRestaurant = () => {
-//   dialog.innerHTML = "";
-//   const toDisplay = [
-//     ["address", "Address"],
-//     ["postalCode", "Postal Code"],
-//     ["city", "City"],
-//     ["phone", "Phone"],
-//     ["company", "Company"],
-//   ];
-//   const title = document.createElement("h2");
-//   const restaurant = restaurants.find((r) => r._id === selectedRestaurant);
-//   if (restaurant) {
-//     title.textContent = restaurant.name;
-//     for (const keys of toDisplay) {
-//       const key = keys[0];
-//       const name = keys[1];
-//       const p = document.createElement("p");
-//       p.textContent = `${name}: ${restaurant[key]}`;
-//       dialog.append(p);
-//     }
-//     displayDailyMenu(selectedRestaurant);
-//   } else {
-//     title.textContent = "No restaurant found";
-//   }
-//   dialog.prepend(title);
-//   dialog.showModal();
-// };
-
-// const displayDailyMenu = async (id) => {
-//   const data = await fetchData(`${api}/restaurants/daily/${id}/fi`);
-//   if (data) {
-//     const title = document.createElement("h3");
-//     title.textContent = "Daily Menu";
-//     dialog.append(title);
-//     // If there are no courses, display a message
-//     if (data?.courses?.length === 0) {
-//       const message = document.createElement("p");
-//       message.textContent = "Nothing to show";
-//       dialog.append(message);
-//       return;
-//     }
-//     data.courses.forEach((item) => {
-//       const wrapper = document.createElement("div");
-//       const nameP = document.createElement("p");
-//       const dietP = document.createElement("p");
-//       const priceP = document.createElement("p");
-//       wrapper.classList.add("menu-item");
-//       const {name, diets, price} = item;
-//       nameP.textContent = name.length === 0 ? "Unknown" : name;
-//       dietP.textContent = diets;
-//       priceP.textContent = price;
-//       dietP.classList.add("bold");
-//       priceP.classList.add("italic");
-//       wrapper.append(nameP, dietP, priceP);
-//       dialog.append(wrapper);
-//     });
-//   } else {
-//     // If there is no daily menu, display a message
-//     const message = document.createElement("p");
-//     message.textContent = "No daily menu available";
-//     dialog.append(message);
-//   }
-// };
