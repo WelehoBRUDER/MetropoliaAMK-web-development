@@ -1,8 +1,15 @@
 import {fetchData} from "./lib/utils.js";
 import {baseUrl} from "./lib/variables.js";
-import {restaurantRow, restaurantModal} from "./components/components.js";
+import {
+  restaurantTableHeader,
+  restaurantRow,
+  restaurantModal,
+} from "./components/components.js";
 
-const restaurants = [];
+let selectedRestaurant = "";
+let selectedCompany = "";
+let restaurants = [];
+const restaurantsData = [];
 
 const sortRestaurantsAlphabetically = () => {
   restaurants.sort((a, b) => a.name.localeCompare(b.name));
@@ -14,20 +21,21 @@ const closeDialog = (e) => {
   dialog.close();
 };
 
-let selectedRestaurant = "";
 const dialog = document.querySelector("#restaurant-info");
 dialog.addEventListener("click", closeDialog);
 
 const getRestaurants = async () => {
   const data = await fetchData(`${baseUrl}/restaurants`);
   if (data) {
-    restaurants.push(...data);
+    restaurantsData.push(...data);
   }
 };
 
 const createRestaurantsDisplay = () => {
   const restaurantsList = document.querySelector(".restaurants");
+  restaurantsList.innerHTML = "";
 
+  restaurantsList.append(restaurantTableHeader());
   restaurants.forEach((restaurant) => {
     const tr = restaurantRow(restaurant);
 
@@ -65,10 +73,47 @@ const showSelectedRestaurant = async () => {
   dialog.showModal();
 };
 
+const getCompanies = () => {
+  const companies = restaurantsData.map((restaurant) => restaurant.company);
+  return [...new Set(companies)];
+};
+
+const createOptions = () => {
+  const select = document.querySelector("#company-select");
+  const companies = getCompanies();
+  companies.unshift("All");
+  companies.forEach((company) => {
+    const option = document.createElement("option");
+    option.value = company;
+    option.textContent = company;
+    select.append(option);
+  });
+
+  select.addEventListener("change", (e) => {
+    selectedCompany = e.target.value;
+    if (selectedCompany === "All") {
+      restaurants = structuredClone(restaurantsData);
+    } else {
+      filterRestaurants();
+    }
+    sortRestaurantsAlphabetically();
+    createRestaurantsDisplay();
+  });
+};
+
+const filterRestaurants = () => {
+  const filtered = restaurantsData.filter((restaurant) => {
+    return restaurant.company.toLowerCase() === selectedCompany.toLowerCase();
+  });
+  restaurants = filtered;
+};
+
 const main = async () => {
   await getRestaurants();
+  restaurants = structuredClone(restaurantsData);
   sortRestaurantsAlphabetically();
   createRestaurantsDisplay();
+  createOptions();
 };
 
 main();
