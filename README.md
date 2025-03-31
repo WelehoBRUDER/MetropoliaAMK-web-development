@@ -42,3 +42,13 @@ This repository houses all web-development tasks for my studies at Metropolia AM
 #### [Advanced JavaScript](https://users.metropolia.fi/~juhanaha/web-development/week-3/advanced-js/)
 * [x] Assignment 1
 * [x] Assignment 2
+
+# Week 3
+### Express
+* [x] Assignment 1
+* [] Assignment 2
+* [] Assignment 3
+* [] Assignment 4
+* [] Assignment 5
+* [] Assignment 6
+* [] Assignment 7
