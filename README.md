@@ -46,9 +46,9 @@ This repository houses all web-development tasks for my studies at Metropolia AM
 # Week 3
 ### Express
 * [x] Assignment 1
-* [] Assignment 2
-* [] Assignment 3
-* [] Assignment 4
-* [] Assignment 5
-* [] Assignment 6
-* [] Assignment 7
+* [ ] Assignment 2
+* [ ] Assignment 3
+* [ ] Assignment 4
+* [ ] Assignment 5
+* [ ] Assignment 6
+* [ ] Assignment 7
